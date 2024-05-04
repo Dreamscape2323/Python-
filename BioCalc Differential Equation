@@ -1,0 +1,34 @@
+import math
+import matplotlib.pyplot as plt
+import numpy as np
+
+#functions
+#differential equation dy/dx = 86-0.4y
+dy = lambda x,y: 86-0.40*y
+
+#solution 215 - 215*e^(-0.40x)
+f = lambda x: 215-215*math.exp(-0.40*x)
+
+#initialization
+xi = 0; xf = 20; h = 1
+n = int((xf-xi)/h)
+x=0; y = 60
+
+#prints the first row header and the initial value for x and y
+print('x \t\t y'); print('%.0f \t %.4f'%(x,y))
+x_plot=[]; y_euler = []; y_analytical =[]
+
+#Euler's Method
+for i in range(1,n+1):
+  x_plot.append(x); y_euler.append(y); y_analytical.append(f(x))
+  y = y+dy(x,y)*h
+  x = x+h
+  print('%.0f \t %.4f'% (x,y))
+
+x_plot.append(x); y_euler.append(y); y_analytical.append(f(x))
+
+plt.plot(x_plot, y_euler,'ro')
+plt.plot(x_plot, y_analytical)
+plt.legend(['Euler','Analytical'])
+plt.xlabel('days'), plt.ylabel('Fish')
+plt.show()
