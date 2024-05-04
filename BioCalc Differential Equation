@@ -12,7 +12,7 @@ f = lambda x: 215-215*math.exp(-0.40*x)
 #initialization
 xi = 0; xf = 20; h = 1
 n = int((xf-xi)/h)
-x=0; y = 60
+x=0; y = 0
 
 #prints the first row header and the initial value for x and y
 print('x \t\t y'); print('%.0f \t %.4f'%(x,y))
